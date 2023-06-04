@@ -52,7 +52,7 @@ function parseTime(unixTime){
 
 function requestDataForStop(stop, callback){
     var request = new XMLHttpRequest();
-    var url = 'http://data.foli.fi/siri/sm/' + stop;
+    var url = 'https://data.foli.fi/siri/sm/' + stop;
     request.open('GET', url, true);
 
     request.onload = function(){

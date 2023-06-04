@@ -20,6 +20,7 @@ var lines = [
 var times = [];
 
 function getData(){
+    var table = document.getElementById("taulu");
     lineStops.forEach(function(line){
         console.log("Line", line.number);
         requestDataForStop(line.stop, function(result){
@@ -27,6 +28,14 @@ function getData(){
             result.forEach(function(item){
                 if (item.lineref == line.number && line.time == null){
                     line.time = parseTime(item.expecteddeparturetime);
+                    var row = document.createElement("tr");
+                    var busline = document.createElement("td");
+                    busline.innerText = line.number;
+                    var lineTime = document.createElement("td");
+                    lineTime.innerText = line.time;
+                    row.appendChild(busline);
+                    row.appendChild(lineTime);
+                    table.appendChild(row);
                 }
             });
         });
@@ -104,4 +113,4 @@ function parseTimes(times){
     });
 }
 
-getData();
+//getData();
